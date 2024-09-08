@@ -10,22 +10,13 @@ MODULES := $(filter-out utils main,$(notdir $(wildcard $(PROJECT_ROOT)/*)))
 CC := gcc
 CFLAGS := -Wall -Wextra -I$(UTILS_DIR)
 
-# utils/*.c
-UTILS_SRCS := $(wildcard $(UTILS_DIR)/*.c)
-UTILS_OBJS := $(UTILS_SRCS:.c=.o)
-
-
 .PHONY: all clean $(MODULES)
 
 all: $(MODULES)
 
-# utils/*.cをコンパイル
-$(UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
 # ターゲットをコンパイルして実行
 define MODULE_template
-$(1)/%: $(PROJECT_ROOT)/$(1)/%.c $(UTILS_OBJS)
+$(1)/%: $(PROJECT_ROOT)/$(1)/%.c
 	$(CC) $(CFLAGS) $$^ -o $(MAIN_DIR)/main
 	@echo "\n--- 実行開始 $@ ---\n"
 	@$(MAIN_DIR)/main
@@ -33,7 +24,6 @@ $(1)/%: $(PROJECT_ROOT)/$(1)/%.c $(UTILS_OBJS)
 endef
 
 $(foreach module,$(MODULES),$(eval $(call MODULE_template,$(module))))
-
 
 clean:
 	rm -f $(MAIN_DIR)/main

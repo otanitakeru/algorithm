@@ -1,6 +1,6 @@
-#ifndef _PRINT_ARRAY_H_
-#define _PRINT_ARRAY_H_
-
-void print_int_array(int array[], int n);
-
-#endif
+void print_int_array(int array[], int array_size){
+    for(int i = 0; i < array_size; i++){
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
