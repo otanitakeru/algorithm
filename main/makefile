@@ -36,7 +36,9 @@ clean:
 
 $(MODULES):
 	@echo "$@ のターゲット一覧:"
-	@$(MAKE) --no-print-directory list | grep "^$@/"
+	@for target in $(filter $@/%,$(EXECUTABLES)); do \
+		echo "  make $$target"; \
+	done
 
 modules:
 	@echo "実行可能なターゲットを持つモジュール:"
