@@ -19,12 +19,12 @@ void insertion_sort(int array[], int array_size);
 
 int main(void){
     printf("Before: \n");
-    print_int_array(array, 6);
+    print_int_array1d(array, 6);
 
     insertion_sort(array, 6);
 
     printf("\nAfter: \n");
-    print_int_array(array, 6);
+    print_int_array1d(array, 6);
 
     return 0;
 }
