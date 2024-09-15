@@ -27,6 +27,8 @@ int main(void){
     bubble_sort(v);
 
     vector_int_1d_print(&v);
+
+    vector_int_1d_free(&v);
     
     return 0;
 }
