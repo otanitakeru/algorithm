@@ -11,6 +11,7 @@ typedef struct {
     int capacity;
 } VectorInt1d;
 
+bool vector_int_1d_is_empty(VectorInt1d *v);
 
 void vector_int_1d_init(VectorInt1d *v);
 
@@ -25,11 +26,10 @@ void vector_int_1d_deep_copy(VectorInt1d *v1, VectorInt1d *v2);
 void vector_int_1d_reverse(VectorInt1d *v);
 void vector_int_1d_find(VectorInt1d *v, int x);
 void vector_int_1d_remove(VectorInt1d *v, int x);
-// void vector_int_1d_swap_elements(VectorInt1d *v, int index1, int index2);
+void vector_int_1d_swap_elements(VectorInt1d *v, int index1, int index2);
 
 // Infomation
 int vector_int_1d_size(VectorInt1d *v);
-int vector_int_1d_is_empty(VectorInt1d *v);
 int vector_int_1d_capacity(VectorInt1d *v);
 
 void vector_int_1d_print(VectorInt1d *v);
