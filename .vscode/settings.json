@@ -1,7 +1,0 @@
-{
-  "files.associations": {
-    "stdbool.h": "c",
-    "vector_int_1d.h": "c",
-    "print_array.h": "c"
-  }
-}
