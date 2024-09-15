@@ -3,6 +3,7 @@
 */
 
 #include <stdio.h>
+#include <stdbool.h>
 
 #include "print_array.h"
 
@@ -14,7 +15,7 @@ int top = 0;
 
 void push(int x);
 int pop(void);
-int is_empty(void);
+bool is_empty(void);
 int is_full(void);
 
 int main(void){
@@ -66,7 +67,7 @@ int pop(void){
     return return_value;
 }
 
-int is_empty(void){
+bool is_empty(void){
     return top == 0;
 }
 

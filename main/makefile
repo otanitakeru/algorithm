@@ -16,13 +16,21 @@ EXECUTABLE_MODULES := $(sort $(foreach exec,$(EXECUTABLES),$(firstword $(subst /
 CC := gcc
 CFLAGS := -Wall -Wextra -I$(UTILS_DIR)
 
+# utils ディレクトリの .c ファイルを取得
+UTILS_SRCS := $(wildcard $(UTILS_DIR)/*.c)
+UTILS_OBJS := $(UTILS_SRCS:.c=.o)
+
 .PHONY: all clean $(MODULES) list modules
 
 all: modules list
 
+# utils ディレクトリの .c ファイルをコンパイル
+$(UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 # ターゲットをコンパイルして実行
 define MODULE_template
-$(1)/%: $(PROJECT_ROOT)/$(1)/%.c
+$(1)/%: $(PROJECT_ROOT)/$(1)/%.c $(UTILS_OBJS)
 	$(CC) $(CFLAGS) $$^ -o $(MAIN_DIR)/$$*.o
 	@echo "\n--- 実行開始 ---\n"
 	@$(MAIN_DIR)/$$*.o
