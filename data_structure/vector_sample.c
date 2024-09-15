@@ -1,44 +1,8 @@
 #include <stdio.h>
 
-#include "vector.h"
+#include "vector_int_1d.h"
 
 int main(void){
-    //     SimpleVector v;
-    // simple_vector_init(&v);
-
-    // for(int i = 0; i < 10; i++){
-    //     simple_vector_push_back(&v, i);
-    // }
-
-    // simple_vector_print(&v);
-
-    // simple_vector_pop_back(&v);
-
-    // simple_vector_print(&v);
-
-    // simple_vector_insert(&v, 3, 100);
-
-    // simple_vector_print(&v);
-
-    // simple_vector_erase(&v, 3);
-
-    // simple_vector_print(&v);
-
-    // printf("%d\n", simple_vector_find(&v, 4));
-
-    // simple_vector_remove(&v, 3);
-
-    // simple_vector_print(&v);
-
-    // printf("%d\n", simple_vector_get(&v, 3));
-
-    // printf("%d\n", simple_vector_size(&v));
-
-    // simple_vector_reverse(&v);
-
-    // simple_vector_print(&v);
-
-
     VectorInt1d v;
     vector_int_1d_init(&v);
 

@@ -4,9 +4,14 @@ vectorをC言語で実装する (*1次元のint型に対応する簡易的なも
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <assert.h>
 
-#include "vector.h"
+#include "vector_int_1d.h"
+
+bool vector_int_1d_is_empty(VectorInt1d *v){
+    return v -> size == 0;
+}
 
 void vector_int_1d_init(VectorInt1d *v){
     v -> data = (int *)malloc(sizeof(int) * VECTOR_MINIMUM_CAPACITY);
@@ -106,10 +111,6 @@ void vector_int_1d_swap_elements(VectorInt1d *v, int index1, int index2){
 
 int vector_int_1d_size(VectorInt1d *v){
     return v -> size;
-}
-
-int vector_int_1d_is_empty(VectorInt1d *v){
-    return v -> size == 0;
 }
 
 int vector_int_1d_capacity(VectorInt1d *v){
