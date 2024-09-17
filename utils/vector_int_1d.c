@@ -109,6 +109,36 @@ void vector_int_1d_swap_elements(VectorInt1d *v, int index1, int index2){
     v -> data[index2] = tmp;
 }
 
+int vector_int_1d_binary_search_lower(VectorInt1d *v, int x){
+    int left = 0;
+    int right = v -> size;
+
+    while(left < right){
+        int mid = (left + right) / 2;
+        if(v -> data[mid] < x){
+            left = mid + 1;
+        }else{
+            right = mid;
+        }
+    }
+    return left;
+}
+
+int vector_int_1d_binary_search_upper(VectorInt1d *v, int x){
+    int left = 0;
+    int right = v -> size;
+
+    while(left < right){
+        int mid = (left + right) / 2;
+        if(v -> data[mid] <= x){
+            left = mid + 1;
+        }else{
+            right = mid;
+        }
+    }
+    return left;
+}
+
 int vector_int_1d_size(VectorInt1d *v){
     return v -> size;
 }

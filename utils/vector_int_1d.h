@@ -27,6 +27,8 @@ void vector_int_1d_reverse(VectorInt1d *v);
 void vector_int_1d_find(VectorInt1d *v, int x);
 void vector_int_1d_remove(VectorInt1d *v, int x);
 void vector_int_1d_swap_elements(VectorInt1d *v, int index1, int index2);
+int vector_int_1d_binary_search_lower(VectorInt1d *v, int x);
+int vector_int_1d_binary_search_upper(VectorInt1d *v, int x);
 
 // Infomation
 int vector_int_1d_size(VectorInt1d *v);
