@@ -3,6 +3,13 @@ PROJECT_ROOT := ..
 UTILS_DIR := $(PROJECT_ROOT)/utils
 MAIN_DIR := .
 
+# コマンドライン引数の処理
+TARGET := $(firstword $(MAKECMDGOALS))
+ARGS := $(wordlist 2, $(words $(MAKECMDGOALS)), $(MAKECMDGOALS))
+
+# 引数をターゲットとして解釈させないようにするための設定
+$(eval $(ARGS):;@:)
+
 # モジュール名
 MODULES := $(filter-out utils main,$(notdir $(wildcard $(PROJECT_ROOT)/*)))
 
@@ -33,7 +40,7 @@ define MODULE_template
 $(1)/%: $(PROJECT_ROOT)/$(1)/%.c $(UTILS_OBJS)
 	$(CC) $(CFLAGS) $$^ -o $(MAIN_DIR)/$$*.o
 	@echo "\n--- 実行開始 ---\n"
-	@$(MAIN_DIR)/$$*.o
+	@$(MAIN_DIR)/$$*.o $(ARGS)
 	@echo "\n--- 実行終了 ---\n"
 endef
 
@@ -70,6 +77,10 @@ help:
 	@echo "  make clean             - コンパイルされた .o ファイルを削除"
 	@echo ""
 	@echo "例: make sort/insertion_sort"
+	@echo ""
+	@echo "引数の指定方法:"
+	@echo "  make <モジュール>/<ターゲット名> [引数1 引数2 ...]"
+	@echo "例: make sort/bubble_sort 10 20 30"
 	@echo ""
 	@echo "全てのモジュール: $(MODULES)"
 	@echo "実行可能なターゲットを持つモジュール: $(EXECUTABLE_MODULES)"
